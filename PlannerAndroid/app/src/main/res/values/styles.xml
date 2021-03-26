@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary" type="color">@color/design_default_color_primary</item>
+    <item name="colorPrimaryDark" type="color">@color/design_default_color_primary_dark</item>
+    <item name="colorAccent" type="color">@color/design_default_color_secondary</item>
+    </style>
+</resources>
