@@ -12,7 +12,7 @@ import android.view.View;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.plannerapp.constants.Urls;
-import com.example.plannerapp.dto.LoginBedRequest;
+import com.example.plannerapp.dto.BedRequestDTO;
 import com.example.plannerapp.dto.LoginDTO;
 import com.example.plannerapp.dto.LoginResultDTO;
 import com.example.plannerapp.network.ImageRequester;
@@ -89,9 +89,15 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 String json = response.errorBody().string();
                                 Gson gson = new Gson();
-                                LoginBedRequest result = gson.fromJson(json, LoginBedRequest.class);
-                                emailLayout.setError(result.getEmail());
-                                passwordLayout.setError(result.getPassword());
+                                BedRequestDTO result = gson.fromJson(json, BedRequestDTO.class);
+                                if(result.getErrors().containsKey("Email"))
+                                 emailLayout.setError(result.getErrors().get("Email")[0]);
+                                else
+                                    emailLayout.setError("");
+                                if(result.getErrors().containsKey("Password"))
+                                 passwordLayout.setError(result.getErrors().get("Password")[0]);
+                                else
+                                    passwordLayout.setError("");
                             } catch (IOException ex) {
                                 email.setText(ex.getMessage());
 
